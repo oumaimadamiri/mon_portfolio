@@ -13,37 +13,28 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I’m a Software Engineer who loves transforming ideas into
-              reliable, scalable products. Over time, I’ve explored several
-              technologies and found my passion in building high-performance
-              systems and intuitive user experiences.
+               Hello! Je suis Oumaima Damiri, ingénieure en Systèmes Intelligents basée à El Jadida, Maroc. 
+               Je conçois des solutions complètes qui relient le monde physique (capteurs, microcontrôleurs ESP32/Raspberry Pi, protocoles MQTT/I2C/Modbus) au monde logiciel (React.js, React Native, Spring Boot, FastAPI, Django).
               <br />
               <br />
-              I’m proficient in
+              
               <i>
                 <b className="purple">
                   {" "}
-                  JavaScript, C++, Rust, Node.js, and Java{" "}
+                 Mon terrain de jeu :{" "}
                 </b>
               </i>
-              — and I enjoy working across both backend and frontend stacks.
+              les jumeaux numériques industriels, l'IoT et les architectures temps réel.
               <br />
+              Actuellement en stage de fin d'études chez OCP — Research Center ManufacturiX, je développe un système complet de simulation et supervision SCADA pour un turbo-alternateur.
               <br />
-              My key areas of interest include developing
+              <br/>
+              
+              Je m'intéresse particulièrement à : 
+              <b className="purple"> IoT & systèmes embarqués </b> {" , "}
               <i>
-                <b className="purple">
-                  {" "}
-                  Web Applications, Blockchain Solutions,{" "}
-                </b>
-              </i>
-              and exploring new ways to bridge on-chain and off-chain systems.
-              <br />
-              <br />
-              Whenever possible, I love building projects with
-              <b className="purple"> Node.js </b> and modern frameworks like{" "}
-              <i>
-                <b className="purple">React.js</b> and{" "}
-                <b className="purple">Next.js</b>.
+                <b className="purple">Applications web/mobile cross-platform</b> et {" "}
+                <b className="purple">Intégration d'IA dans les systèmes industriels</b>.
               </i>
             </p>
           </Col>
