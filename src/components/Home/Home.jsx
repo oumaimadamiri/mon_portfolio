@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import homeLogo from "../../Assets/home-main.svg";
+import homeLogo from "../../Assets/home.png";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
@@ -54,9 +54,9 @@ function Home() {
       <Container>
         <Row style={{ paddingTop: "50px", paddingBottom: "80px" }}>
           <Col md={12} className="home-about-social">
-            <h1>Find Me On</h1>
+            <h1>Trouvez-moi sur</h1>
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              N’hésitez pas à me <span className="purple">contacter </span>
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">

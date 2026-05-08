@@ -114,6 +114,7 @@ import Docker     from "../../Assets/TechIcons/Docker.svg";
 import SQL        from "../../Assets/TechIcons/SQL.svg";
 import Tailwind   from "../../Assets/TechIcons/Tailwind.svg";
 import Postman    from "../../Assets/TechIcons/Postman.svg";
+// import fastapi    from "../../Assets/TechIcons/fastapi.svg"
 
 function Techstack() {
   return (
@@ -136,6 +137,7 @@ function Techstack() {
           { src: Docker,     alt: "Docker",       label: "Docker"      },
           { src: Git,        alt: "Git",          label: "Git"         },
           { src: Postman,    alt: "Postman",      label: "Postman"     },
+          // { src: fastapi,    alt:"fastapi",       label: "FastAPI"     },
         ].map((tech, i) => (
           <Col xs={4} md={2} className="tech-icons" key={i}>
             <img src={tech.src} alt={tech.alt} />
@@ -145,11 +147,11 @@ function Techstack() {
 
         {/* FastAPI & Django via react-icons */}
         <Col xs={4} md={2} className="tech-icons">
-          <SiFastapi size={50} color="#05998b" />
+          <SiFastapi size={25} color="#05998b" />
           <div className="tech-icons-text">FastAPI</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <SiDjango size={50} color="#092e20" />
+          <SiDjango size={25} color="#092e20" />
           <div className="tech-icons-text">Django</div>
         </Col>
       </Row>
@@ -164,27 +166,27 @@ function Techstack() {
           <div className="tech-icons-text">C / C++</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <SiEspressif size={50} color="#e7352c" />
+          <SiEspressif size={25} color="#e7352c" />
           <div className="tech-icons-text">ESP32</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <SiRaspberrypi size={50} color="#c51a4a" />
+          <SiRaspberrypi size={25} color="#c51a4a" />
           <div className="tech-icons-text">Raspberry Pi</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <SiArduino size={50} color="#00979d" />
+          <SiArduino size={25} color="#00979d" />
           <div className="tech-icons-text">Arduino</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <BsWifi size={50} color="#c770f0" />
+          <BsWifi size={25} color="#c770f0" />
           <div className="tech-icons-text">MQTT</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <FaMicrochip size={50} color="#c770f0" />
+          <FaMicrochip size={25} color="#c770f0" />
           <div className="tech-icons-text">Modbus / I2C</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <FaMicrochip size={50} color="#aaa" />
+          <FaMicrochip size={25} color="#aaa" />
           <div className="tech-icons-text">RFID / NFC</div>
         </Col>
       </Row>
