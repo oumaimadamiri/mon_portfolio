@@ -13,20 +13,29 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-               Hello! Je suis Oumaima Damiri, ingénieure en Systèmes Intelligents basée à El Jadida, Maroc. 
-               Je conçois des solutions complètes qui relient le monde physique (capteurs, microcontrôleurs ESP32/Raspberry Pi, protocoles MQTT/I2C/Modbus) au monde logiciel (React.js, React Native, Spring Boot, FastAPI, Django).
+               Hi ! Je suis Oumaima Damiri, ingénieure formée à la 
+              fois au Génie Électrique (DUT) et au Génie Logiciel 
+              (Master ISI).              
               <br />
               <br />
-              
+              Cette double formation m'a permis de développer une 
+              expertise rare allant des microcontrôleurs ESP32 aux 
+              applications React/Spring Boot, en passant par les 
+              APIs FastAPI et les protocoles industriels (MQTT, 
+              Modbus).
+              <br />
+              <br />
               <i>
                 <b className="purple">
                   {" "}
-                 Mon terrain de jeu :{" "}
+                 Parmi mes réalisations :{" "}
                 </b>
               </i>
-              les jumeaux numériques industriels, l'IoT et les architectures temps réel.
-              <br />
-              Actuellement en stage de fin d'études chez OCP — Research Center ManufacturiX, je développe un système complet de simulation et supervision SCADA pour un turbo-alternateur.
+              un Digital Twin complet pour 
+              un turbo-alternateur industriel (OCP — Research Center 
+              ManufacturiX), une application mobile de géolocalisation 
+              NFC (Find'N'Tag), et un système IoT de gestion de 
+              parking.
               <br />
               <br/>
               
@@ -36,6 +45,9 @@ function Home2() {
                 <b className="purple">Applications web/mobile cross-platform</b> et {" "}
                 <b className="purple">Intégration d'IA dans les systèmes industriels</b>.
               </i>
+              <br/>
+              Ouverte aux opportunités en développement Full-Stack, 
+              IoT industriel ou Digital Twin
             </p>
           </Col>
           <Col md={4} className="myAvtar">
