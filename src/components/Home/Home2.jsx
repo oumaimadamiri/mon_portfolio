@@ -10,7 +10,8 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LAISSEZ-MOI ME  <span className="purple"> PRESENTER </span> 
+              PERMETTEZ-MOI DE ME{" "}
+              <span className="purple"> PRÉSENTER </span>
             </h1>
             <p className="home-about-body">
                Salut ! Je suis Oumaima Damiri, ingénieure formée à la 

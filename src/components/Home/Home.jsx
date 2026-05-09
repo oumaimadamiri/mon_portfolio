@@ -29,7 +29,7 @@ function Home() {
               </h1>
 
               <h1 className="heading-name">
-                I'M
+                Je suis
                 <strong className="main-name"> Oumaima DAMIRI</strong>
               </h1>
 
@@ -54,9 +54,9 @@ function Home() {
       <Container>
         <Row style={{ paddingTop: "50px", paddingBottom: "80px" }}>
           <Col md={12} className="home-about-social">
-            <h1>Trouvez-moi sur</h1>
+            <h1>Me retrouver sur</h1>
             <p>
-              N’hésitez pas à me <span className="purple">contacter </span>
+              N’hésitez pas à me <span className="purple">contacter !</span>
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">

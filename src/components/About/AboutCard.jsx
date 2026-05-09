@@ -8,35 +8,50 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi everyone! I’m <span className="purple">Oumaima Damiri</span>{" "}
-            from <span className="purple">El Jadida , Maroc</span>.
-            <br />
-            I’m currently working as a{" "}
-            <span className="purple">Software Developer</span> at{" "}
-            <span className="purple">Juspay</span>.
-            <br />I hold an Master  (IMSc) in{" "}
-            <span className="purple">Ingénierie des Systèmes Intelligents — Génie Logiciel</span> from{" "}
-            <span className="purple">Faculté des Sciences Ain Chock, Casablanca</span>.
+            Bonjour ! Je suis{" "}
+            <span className="purple">Oumaima Damiri</span>, ingénieure
+            originaire d'<span className="purple">El Jadida, Maroc</span>.
             <br />
             <br />
-            Outside of coding, I love engaging in activities that keep me
-            creative and inspired:
+            Mon parcours hybride —{" "}
+            <span className="purple">DUT Génie Électrique</span> puis{" "}
+            <span className="purple">
+              Master Ingénierie des Systèmes Intelligents
+            </span>{" "}
+            (option Génie Logiciel) à la Faculté des Sciences Ain Chock,
+            Casablanca — m'a permis de développer une double expertise rare :{" "}
+            <span className="purple">systèmes embarqués & IoT</span> d'un
+            côté, <span className="purple">développement Full-Stack</span>{" "}
+            Web & Mobile de l'autre.
+            <br />
+            <br />
+            Je suis à l'aise aussi bien avec un microcontrôleur{" "}
+            <span className="purple">ESP32</span> qu'avec une application{" "}
+            <span className="purple">React Native</span> ou un backend{" "}
+            <span className="purple">Spring Boot / FastAPI</span> — du capteur jusqu'à l'interface utilisateur.
+            <br />
+            <br />
+            En dehors du code, ce qui me passionne :
           </p>
 
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Playing Games 🎮
+              <ImPointRight /> Veille technologique IoT & IA 🤖
             </li>
             <li className="about-activity">
-              <ImPointRight /> Writing Tech Blogs ✍️
+              <ImPointRight /> Projets électroniques DIY & prototypage ⚡
             </li>
             <li className="about-activity">
-              <ImPointRight /> Traveling and Exploring New Places 🌍
+              <ImPointRight /> Exploration de nouvelles architectures logicielles 🏗️
+            </li>
+            <li className="about-activity">
+              <ImPointRight /> Voyages & découverte de nouvelles cultures 🌍
             </li>
           </ul>
 
           <p style={{ color: "rgb(155 126 172)" }}>
-            "Bridging the gap between hardware and software"{" "}
+            "Du microcontrôleur à l'application — relier le monde physique au monde
+            logiciel."
           </p>
           <footer className="blockquote-footer">Oumaima</footer>
         </blockquote>

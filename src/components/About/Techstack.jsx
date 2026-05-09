@@ -114,7 +114,10 @@ import Docker     from "../../Assets/TechIcons/Docker.svg";
 import SQL        from "../../Assets/TechIcons/SQL.svg";
 import Tailwind   from "../../Assets/TechIcons/Tailwind.svg";
 import Postman    from "../../Assets/TechIcons/Postman.svg";
-// import fastapi    from "../../Assets/TechIcons/fastapi.svg"
+import modbus from "../../Assets/TechIcons/modbus.png";
+import rfid    from "../../Assets/TechIcons/rfid.svg";
+import NFC from "../../Assets/TechIcons/NFC.svg";
+import mqtt from "../../Assets/TechIcons/mqtt.png";
 
 function Techstack() {
   return (
@@ -137,7 +140,6 @@ function Techstack() {
           { src: Docker,     alt: "Docker",       label: "Docker"      },
           { src: Git,        alt: "Git",          label: "Git"         },
           { src: Postman,    alt: "Postman",      label: "Postman"     },
-          // { src: fastapi,    alt:"fastapi",       label: "FastAPI"     },
         ].map((tech, i) => (
           <Col xs={4} md={2} className="tech-icons" key={i}>
             <img src={tech.src} alt={tech.alt} />
@@ -178,16 +180,20 @@ function Techstack() {
           <div className="tech-icons-text">Arduino</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <BsWifi size={25} color="#c770f0" />
+          <img src={mqtt} alt="mqtt" className="tech-icon-images" />
           <div className="tech-icons-text">MQTT</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <FaMicrochip size={25} color="#c770f0" />
-          <div className="tech-icons-text">Modbus / I2C</div>
+          <img src={modbus} alt="modbus" className="tech-icon-images" />
+          <div className="tech-icons-text">Modbus</div>
         </Col>
         <Col xs={4} md={2} className="tech-icons">
-          <FaMicrochip size={25} color="#aaa" />
-          <div className="tech-icons-text">RFID / NFC</div>
+          <img src={rfid} alt="rfid" className="tech-icon-images" />
+          <div className="tech-icons-text">RFID </div>
+        </Col>
+        <Col xs={4} md={2} className="tech-icons">
+          <img src={NFC} alt="NFC" className="tech-icon-images" />
+          <div className="tech-icons-text">NFC </div>
         </Col>
       </Row>
     </>
