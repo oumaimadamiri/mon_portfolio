@@ -8,8 +8,10 @@ import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
 import Experience from "./Experience"; // ← nouveau
 import Education from "./Education";  // ← nouveau
+import {useLang} from "../context/LanguageContext"
 
 function About() {
+  const { t } = useLang();
   return (
     <>
       {" "}
@@ -26,7 +28,8 @@ function About() {
               }}
             >
               <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-                Qui <strong className="purple">Suis-Je ?</strong>
+                {t("about_who1")}{" "} 
+                <strong className="purple">{t("about_who2")}</strong>
               </h1>
               <Aboutcard />
             </Col>
@@ -39,13 +42,15 @@ function About() {
             </Col>
           </Row>
           <h1 className="project-heading">
-            Mes <strong className="purple">Compétences</strong>
+            {t("about_skills1")}{" "} 
+            <strong className="purple">{t("about_skills2")}</strong>
           </h1>
 
           <Techstack />
 
           <h1 className="project-heading">
-            Mes <strong className="purple">Outils</strong>
+            {t("about_tools1")}{" "}
+            <strong className="purple">{t("about_tools2")}</strong>
           </h1>
           <Toolstack />
           {/* Expérience ← nouveau */}

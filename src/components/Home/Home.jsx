@@ -8,12 +8,15 @@ import Techstack from "../About/Techstack";
 import Github from "../About/Github";
 import {
   AiFillGithub,
-  AiOutlineTwitter,
   AiOutlineMail,
 } from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
+import { useLang } from "../context/LanguageContext";
 
+const PHONE = "+212 632 818 023";
 function Home() {
+  const {t} = useLang();
+
   return (
     <section>
       <Container fluid className="home-section" id="home">
@@ -22,14 +25,14 @@ function Home() {
           <Row>
             <Col md={7} className="home-header">
               <h1 style={{ paddingBottom: 15 }} className="heading">
-                Hi There!{" "}
+                {t("home_greeting")}{" "}
                 <span className="wave" role="img" aria-labelledby="wave">
                   👋🏻
                 </span>
               </h1>
 
               <h1 className="heading-name">
-                Je suis
+                {t("home_iam")}
                 <strong className="main-name"> Oumaima DAMIRI</strong>
               </h1>
 
@@ -54,9 +57,10 @@ function Home() {
       <Container>
         <Row style={{ paddingTop: "50px", paddingBottom: "80px" }}>
           <Col md={12} className="home-about-social">
-            <h1>Me retrouver sur</h1>
+            <h1>{t("home_findme")}</h1>
             <p>
-              N’hésitez pas à me <span className="purple">contacter !</span>
+              {t("home_contact_invite")}{" "} 
+              <span className="purple">{t("home_contact_invite_purple")}</span>
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">
@@ -87,6 +91,18 @@ function Home() {
                   className="icon-colour home-social-icons"
                 >
                   <AiOutlineMail />
+                </a>
+              </li>
+              <li className="social-icons">
+                <a
+                  href={`tel:${PHONE.replace(/\s/g, "")}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  // style={{ color: "white" }}
+                  // title={PHONE}
+                  className="icon-colour home-social-icons"
+                >
+                  <FaPhoneAlt />
                 </a>
               </li>
             </ul>
