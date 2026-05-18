@@ -144,7 +144,7 @@ export const translations = {
         title: "Smart Parking — Gestion intelligente",
         description: "Système IoT de gestion de parking avec Raspberry Pi + RFID pour le contrôle d'accès et interface web de supervision en temps réel.",
         tags: ["IoT", "Web"],
-        ghLink: "https://github.com/oumaimadamiri/smart-parking",
+        ghLink: "https://github.com/oumaimadamiri/smart-parking-system",
       },
       {
         title: "Quizzy — Gestionnaire de quiz",

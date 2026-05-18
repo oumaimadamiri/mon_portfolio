@@ -5,11 +5,11 @@ import Particle from "../Particle";
 import { useLang } from "../context/LanguageContext";
 
 // Images des projets (inchangées)
-import digitalTwinImg from "../../Assets/Projects/chatify.png";
+import digitalTwinImg from "../../Assets/Projects/digital_twin..png";
 import findntagImg    from "../../Assets/Projects/blog.png";
-import parkingImg     from "../../Assets/Projects/codeEditor.png";
-import quizzyImg      from "../../Assets/Projects/leaf.png";
-import moodlyImg      from "../../Assets/Projects/emotion.png";
+import parkingImg     from "../../Assets/Projects/parking.png";
+import quizzyImg      from "../../Assets/Projects/quizzy.png";
+import moodlyImg      from "../../Assets/Projects/moodly.png";
 
 // Images mappées dans l'ordre des projets dans LanguageContext
 const PROJECT_IMAGES = [digitalTwinImg, findntagImg, parkingImg, quizzyImg, moodlyImg];
