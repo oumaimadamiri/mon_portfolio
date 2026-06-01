@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -17,15 +17,13 @@ function NavBar() {
   const [navColour, updateNavbar] = useState(false);
   const { t, lang, toggleLang } = useLang();
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
+  useEffect(() => {
+    function scrollHandler() {
+      updateNavbar(window.scrollY >= 20);
     }
-  }
-
-  window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   return (
     <Navbar
@@ -50,6 +48,7 @@ function NavBar() {
 
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
+          aria-label="Toggle navigation"
           onClick={() => updateExpanded(expand ? false : "expanded")}
         >
           <span></span>
@@ -85,7 +84,6 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            {/* ← Contact maintenant une vraie page interne */}
             <Nav.Item>
               <Nav.Link as={Link} to="/contact" onClick={() => updateExpanded(false)}>
                 <AiOutlineMail style={{ marginBottom: "2px" }} /> {t("nav_contact")}
@@ -94,11 +92,11 @@ function NavBar() {
 
           </Nav>
 
-          {/* ── Bouton switch langue FR / EN ── */}
           <div style={{ display: "flex", alignItems: "center", marginLeft: "12px" }}>
             <button
               onClick={toggleLang}
-              title={lang === "fr" ? "Switch to English" : "Passer en français"}
+              title={t("lang_toggle_title")}
+              aria-label={t("lang_toggle_title")}
               style={{
                 background: "rgba(199, 112, 240, 0.12)",
                 border: "1px solid rgba(199, 112, 240, 0.4)",

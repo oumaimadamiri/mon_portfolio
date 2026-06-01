@@ -1,10 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import Particle from "../Particle";
 import { useLang } from "../context/LanguageContext";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { PHONE, EMAIL } from "../../constants";
+import SEO from "../SEO";
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -14,6 +17,12 @@ function Contact() {
   const { t } = useLang();
   const formRef = useRef();
   const [status, setStatus] = useState("idle");
+
+  useEffect(() => {
+    if (status !== "success") return;
+    const timer = setTimeout(() => setStatus("idle"), 6000);
+    return () => clearTimeout(timer);
+  }, [status]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -28,6 +37,13 @@ function Contact() {
   }
 
   return (
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
+      <SEO path="/contact" />
     <Container fluid className="project-section">
       <Particle />
       <Container style={{ position: "relative", zIndex: 1 }}>
@@ -42,12 +58,12 @@ function Contact() {
             <div className="contact-info-item" style={{ marginBottom: "20px" }}>
               <FaPhoneAlt className="purple" style={{ marginRight: "10px" }} />
               <strong>{t("contact_phone")}</strong>
-              <p style={{ marginLeft: "24px", marginBottom: 0 }}>+212 632 818 023</p>
+              <p style={{ marginLeft: "24px", marginBottom: 0 }}>{PHONE}</p>
             </div>
             <div className="contact-info-item" style={{ marginBottom: "20px" }}>
               <AiOutlineMail className="purple" style={{ marginRight: "10px" }} />
               <strong>{t("contact_email_label")}</strong>
-              <p style={{ marginLeft: "24px", marginBottom: 0 }}>oumaimadamiri04@gmail.com</p>
+              <p style={{ marginLeft: "24px", marginBottom: 0 }}>{EMAIL}</p>
             </div>
             <div className="contact-info-item">
               <FaMapMarkerAlt className="purple" style={{ marginRight: "10px" }} />
@@ -123,6 +139,7 @@ function Contact() {
         </Row>
       </Container>
     </Container>
+    </motion.main>
   );
 }
 

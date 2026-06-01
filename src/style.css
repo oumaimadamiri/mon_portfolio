@@ -474,7 +474,6 @@ button:focus {
   height: 100% !important;
 }
 .project-card-view:hover {
-  transform: scale(1.02) !important;
   overflow: hidden !important;
   box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important;
 }
@@ -591,7 +590,6 @@ button:focus {
 }
 
 .tech-icons:hover {
-  transform: scale(1.05) !important;
   overflow: hidden !important;
   outline: 2.2px solid rgba(197, 115, 230, 0.883) !important;
 }
@@ -759,4 +757,84 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+
+/* --------- */
+/* Hero double-profil pills */
+/* --------- */
+.hero-tagline {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding-left: 50px;
+}
+
+.hero-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid currentColor;
+}
+
+.purple-pill {
+  color: #c770f0;
+  background: rgba(199, 112, 240, 0.08);
+}
+
+.blue-pill {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.hero-bridge {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 1.2rem;
+}
+
+.hero-signature {
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+  margin-top: 14px;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  padding-left: 50px;
+}
+
+@media (max-width: 767px) {
+  .hero-tagline {
+    justify-content: center;
+    padding-left: 0;
+  }
+  .hero-signature {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+/* --------- */
+/* Tablet breakpoints */
+/* --------- */
+@media (min-width: 992px) {
+  .home-content {
+    padding: 7rem 0 2rem !important;
+  }
+  .project-heading {
+    font-size: 2.6em !important;
+  }
+}
+
+/* --------- */
+/* Reduced motion */
+/* --------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

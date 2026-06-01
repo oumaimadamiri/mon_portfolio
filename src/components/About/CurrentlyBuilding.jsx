@@ -1,23 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
+import { motion, useReducedMotion } from "framer-motion";
 import { useLang } from "../context/LanguageContext";
-
-const CONTENT = {
-  fr: {
-    heading1: "🔧 En cours de",
-    heading2: "Construction",
-    description:
-      "Simulation physique temps réel d'un turbo-alternateur industriel avec interface SCADA interactive — modèle thermodynamique IAPWS-IF97, calibration Ridge Regression, conforme ISA-101.",
-    status: "En cours · Fév 2026 → aujourd'hui",
-  },
-  en: {
-    heading1: "🔧 Currently",
-    heading2: "Building",
-    description:
-      "Real-time physical simulation of an industrial turbo-alternator with interactive SCADA interface — IAPWS-IF97 thermodynamic model, Ridge Regression calibration, ISA-101 compliant.",
-    status: "In progress · Feb 2026 → present",
-  },
-};
 
 const TECHS = [
   "FastAPI",
@@ -29,15 +13,15 @@ const TECHS = [
   "Ridge Regression",
 ];
 
-function Github() {
-  const { lang } = useLang();
-  const c = CONTENT[lang];
+function CurrentlyBuilding() {
+  const { t } = useLang();
+  const reduce = useReducedMotion();
 
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
       <h1 className="project-heading pb-4" style={{ paddingBottom: "20px" }}>
-        {c.heading1}{" "}
-        <strong className="purple">{c.heading2}</strong>
+        {t("building_heading1")}{" "}
+        <strong className="purple">{t("building_heading2")}</strong>
       </h1>
 
       <Col md={8}>
@@ -51,25 +35,22 @@ function Github() {
             textAlign: "left",
           }}
         >
-          {/* Titre du projet */}
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "10px" }}>
             <span style={{ fontSize: "1.5rem" }}>🏭</span>
             <div>
               <h4 style={{ margin: 0, color: "#c770f0", fontWeight: 600 }}>
-                Digital Twin — Turbo-Alternator
+                {t("building_project_title")}
               </h4>
               <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}>
-                Research Center ManufacturiX · OCP SA · El Jadida
+                {t("building_project_subtitle")}
               </span>
             </div>
           </div>
 
-          {/* Description */}
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", marginBottom: "18px" }}>
-            {c.description}
+            {t("building_description")}
           </p>
 
-          {/* Badges tech */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {TECHS.map((tech) => (
               <span
@@ -89,7 +70,6 @@ function Github() {
             ))}
           </div>
 
-          {/* Statut */}
           <div
             style={{
               marginTop: "18px",
@@ -100,7 +80,7 @@ function Github() {
               color: "rgba(255,255,255,0.5)",
             }}
           >
-            <span
+            <motion.span
               style={{
                 display: "inline-block",
                 width: "8px",
@@ -108,22 +88,18 @@ function Github() {
                 borderRadius: "50%",
                 background: "#4ade80",
                 boxShadow: "0 0 6px #4ade80",
-                animation: "pulse 2s infinite",
               }}
+              animate={reduce ? {} : { opacity: [1, 0.4, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              aria-hidden="true"
             />
-            {c.status}
+            {t("building_status")}
           </div>
         </div>
       </Col>
 
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
     </Row>
   );
 }
 
-export default Github;
+export default CurrentlyBuilding;

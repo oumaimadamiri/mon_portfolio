@@ -6,10 +6,7 @@ import {
 } from "react-icons/ai";
 import { FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { useLang } from "./context/LanguageContext";
-
-// ← Mettez ici votre vrai numéro de téléphone
-const PHONE = "+212 632 818 023";
-const EMAIL = "oumaimadamiri04@gmail.com";
+import { PHONE, EMAIL, SOCIAL } from "../constants";
 
 function Footer() {
   const year = new Date().getFullYear();
@@ -18,23 +15,19 @@ function Footer() {
   return (
     <Container fluid className="footer">
       <Row>
-        {/* Mention design */}
         <Col md="4" className="footer-copywright">
           <h3>{t("footer_designed")}</h3>
         </Col>
 
-        {/* Copyright */}
         <Col md="4" className="footer-copywright">
           <h3>{t("footer_copyright")} © {year} OD</h3>
         </Col>
 
-        {/* Icônes sociaux + téléphone */}
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
-            {/* GitHub */}
             <li className="social-icons">
               <a
-                href="https://github.com/oumaimadamiri"
+                href={SOCIAL.github}
                 style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -44,10 +37,9 @@ function Footer() {
               </a>
             </li>
 
-            {/* LinkedIn */}
             <li className="social-icons">
               <a
-                href="https://www.linkedin.com/in/oumaima-damiri"
+                href={SOCIAL.linkedin}
                 style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -57,22 +49,24 @@ function Footer() {
               </a>
             </li>
 
-            {/* E-mail */}
             <li className="social-icons">
               <a
                 href={`https://mail.google.com/mail/?view=cm&to=${EMAIL}`}
                 style={{ color: "white" }}
-                aria-label="Envoyer un e-mail"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("aria_send_email")}
               >
                 <AiOutlineMail />
               </a>
             </li>
+
             <li className="social-icons">
               <a
                 href={`tel:${PHONE.replace(/\s/g, "")}`}
                 style={{ color: "white" }}
                 title={PHONE}
-                aria-label="Appeler Oumaima Damiri"
+                aria-label={t("aria_call_me")}
               >
                 <FaPhoneAlt />
               </a>

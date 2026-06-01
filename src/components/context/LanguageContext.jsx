@@ -188,6 +188,49 @@ export const translations = {
     contact_ph_subject: "Objet de votre message",
     contact_ph_message: "Décrivez votre projet ou votre question…",
 
+    // ── Hero ──
+    hero_pill_software: "Full-Stack Web & Mobile",
+    hero_pill_iot: "IoT & Systèmes Embarqués",
+    hero_signature: "Du microcontrôleur à l'interface.",
+
+    // ── Typewriter ──
+    type_strings: [
+      "Ingénieure des Systèmes Intelligents",
+      "Ingénieure IoT & Systèmes Embarqués",
+      "Développeuse Full-Stack Web & Mobile",
+      "Du Microcontrôleur à l'Interface",
+    ],
+
+    // ── Alt & connector ──
+    home2_and_connector: "et",
+    home_image_alt: "Illustration — bureau et matériel embarqué",
+    home2_avatar_alt: "Avatar d'Oumaima Damiri",
+    about_image_alt: "Illustration : ordinateur portable de développement",
+
+    // ── Techstack ──
+    techstack_software_title: "Software & Web",
+    techstack_iot_title: "IoT & Embarqué",
+
+    // ── Navbar & aria ──
+    lang_toggle_title: "Passer en anglais",
+    aria_send_email: "Envoyer un e-mail",
+    aria_call_me: "Appeler Oumaima Damiri",
+
+    // ── CurrentlyBuilding ──
+    building_heading1: "🔧 En cours de",
+    building_heading2: "Construction",
+    building_project_title: "Digital Twin — Turbo-Alternateur",
+    building_project_subtitle: "Research Center ManufacturiX · OCP SA · El Jadida",
+    building_description: "Simulation physique temps réel d'un turbo-alternateur industriel avec interface SCADA interactive — modèle thermodynamique IAPWS-IF97, calibration Ridge Regression, conforme ISA-101.",
+    building_status: "En cours · Fév 2026 → aujourd'hui",
+
+    // ── Resume card labels ──
+    resume_card_dev_label: "Développement Full-Stack",
+    resume_card_iot_label: "IoT & Systèmes Embarqués",
+
+    // ── Filtres ──
+    filter_ai_label: "IA",
+
     // ── Footer ──
     footer_designed: "Conçu et développé par Oumaima Damiri",
     footer_copyright: "Copyright",
@@ -378,6 +421,49 @@ export const translations = {
     contact_ph_email: "you@email.com",
     contact_ph_subject: "Subject of your message",
     contact_ph_message: "Describe your project or question…",
+
+    // ── Hero ──
+    hero_pill_software: "Full-Stack Web & Mobile",
+    hero_pill_iot: "IoT & Embedded Systems",
+    hero_signature: "From microcontroller to interface.",
+
+    // ── Typewriter ──
+    type_strings: [
+      "Intelligent Systems Engineer",
+      "IoT & Embedded Systems Engineer",
+      "Full-Stack Web & Mobile Developer",
+      "From Microcontroller to Interface",
+    ],
+
+    // ── Alt & connector ──
+    home2_and_connector: "and",
+    home_image_alt: "Illustration — desk and embedded hardware",
+    home2_avatar_alt: "Oumaima Damiri's avatar",
+    about_image_alt: "Illustration: developer laptop",
+
+    // ── Techstack ──
+    techstack_software_title: "Software & Web",
+    techstack_iot_title: "IoT & Embedded",
+
+    // ── Navbar & aria ──
+    lang_toggle_title: "Switch to French",
+    aria_send_email: "Send an email",
+    aria_call_me: "Call Oumaima Damiri",
+
+    // ── CurrentlyBuilding ──
+    building_heading1: "🔧 Currently",
+    building_heading2: "Building",
+    building_project_title: "Digital Twin — Turbo-Alternator",
+    building_project_subtitle: "Research Center ManufacturiX · OCP SA · El Jadida",
+    building_description: "Real-time physical simulation of an industrial turbo-alternator with interactive SCADA interface — IAPWS-IF97 thermodynamic model, Ridge Regression calibration, ISA-101 compliant.",
+    building_status: "In progress · Feb 2026 → present",
+
+    // ── Resume card labels ──
+    resume_card_dev_label: "Full-Stack Development",
+    resume_card_iot_label: "IoT & Embedded Systems",
+
+    // ── Filters ──
+    filter_ai_label: "AI",
 
     // ── Footer ──
     footer_designed: "Designed & Developed by Oumaima Damiri",

@@ -1,98 +1,6 @@
-// import React from "react";
-// import { Col, Row } from "react-bootstrap";
-// import { SiNextdotjs, SiSolidity } from "react-icons/si";
-// import { FaRust } from "react-icons/fa";
-// import C from "../../Assets/TechIcons/C++.svg";
-// import Javascript from "../../Assets/TechIcons/Javascript.svg";
-// import Node from "../../Assets/TechIcons/Node.svg";
-// import ReactIcon from "../../Assets/TechIcons/React.svg";
-// import Java from "../../Assets/TechIcons/Java.svg";
-// import Python from "../../Assets/TechIcons/Python.svg";
-// import Typescript from "../../Assets/TechIcons/Typescript.svg";
-// import Git from "../../Assets/TechIcons/Git.svg";
-// import Firebase from "../../Assets/TechIcons/Firebase.svg";
-// import Redis from "../../Assets/TechIcons/Redis.svg";
-// import Docker from "../../Assets/TechIcons/Docker.svg";
-// import Mongo from "../../Assets/TechIcons/Mongo.svg";
-// import SQL from "../../Assets/TechIcons/SQL.svg";
-// import Kubernates from "../../Assets/TechIcons/Kubernates.svg";
-// import Tailwind from "../../Assets/TechIcons/Tailwind.svg";
-// import Postman from "../../Assets/TechIcons/Postman.svg";
-
-// function Techstack() {
-//   return (
-//     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={C} alt="C++" />
-//         <div className="tech-icons-text">C++</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Javascript} alt="javascript" />
-//         <div className="tech-icons-text">Javascript</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Typescript} alt="typescript" />
-//         <div className="tech-icons-text">Typescript</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Node} alt="node" />
-//         <div className="tech-icons-text">Node.Js</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={ReactIcon} alt="react" />
-//         <div className="tech-icons-text">React.Js</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Mongo} alt="mongoDb" />
-//         <div className="tech-icons-text">Mongo DB</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Git} alt="git" />
-//         <div className="tech-icons-text">Git</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Redis} alt="redis" />
-//         <div className="tech-icons-text">Redis</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Docker} alt="docker" />
-//         <div className="tech-icons-text">Docker</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Kubernates} alt="kubernetes" />
-//         <div className="tech-icons-text">Kubernetes</div>
-//       </Col>
-
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={SQL} alt="SQL" />
-//         <div className="tech-icons-text">Postgresql</div>
-//       </Col>
-
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Python} alt="Python" />
-//         <div className="tech-icons-text">Python</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Java} alt="haskell" />
-//         <div className="tech-icons-text">Java</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Tailwind} alt="tailwind" />
-//         <div className="tech-icons-text">Tailwind CSS</div>
-//       </Col>
-//       <Col xs={4} md={2} className="tech-icons">
-//         <img src={Postman} alt="Postman" />
-//         <div className="tech-icons-text">Postman</div>
-//       </Col>
-//     </Row>
-//   );
-// }
-
-// export default Techstack;
-
-
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { motion } from "framer-motion";
 import {
   SiRaspberrypi,
   SiArduino,
@@ -100,8 +8,6 @@ import {
   SiFastapi,
   SiDjango,
 } from "react-icons/si";
-import { FaMicrochip } from "react-icons/fa";
-import { BsWifi } from "react-icons/bs";
 import C          from "../../Assets/TechIcons/C++.svg";
 import Javascript from "../../Assets/TechIcons/Javascript.svg";
 import Node       from "../../Assets/TechIcons/Node.svg";
@@ -118,13 +24,15 @@ import modbus from "../../Assets/TechIcons/modbus.png";
 import rfid    from "../../Assets/TechIcons/rfid.svg";
 import NFC from "../../Assets/TechIcons/NFC.svg";
 import mqtt from "../../Assets/TechIcons/mqtt.png";
+import { useLang } from "../context/LanguageContext";
 
 function Techstack() {
+  const { t } = useLang();
+
   return (
     <>
-      {/* ── Section Software & Web ── */}
       <h2 style={{ color: "white", textAlign: "center", marginBottom: "20px" }}>
-        🖥️ <span className="purple">Software</span> & Web
+        🖥️ <span className="purple">{t("techstack_software_title")}</span>
       </h2>
       <Row style={{ justifyContent: "center", paddingBottom: "30px" }}>
         {[
@@ -141,60 +49,55 @@ function Techstack() {
           { src: Git,        alt: "Git",          label: "Git"         },
           { src: Postman,    alt: "Postman",      label: "Postman"     },
         ].map((tech, i) => (
-          <Col xs={4} md={2} className="tech-icons" key={i}>
-            <img src={tech.src} alt={tech.alt} />
-            <div className="tech-icons-text">{tech.label}</div>
+          <Col xs={4} md={2} key={i}>
+            <motion.div
+              className="tech-icons"
+              whileHover={{ scale: 1.08, transition: { type: "spring", stiffness: 300 } }}
+            >
+              <img src={tech.src} alt={tech.alt} />
+              <div className="tech-icons-text">{tech.label}</div>
+            </motion.div>
           </Col>
         ))}
 
-        {/* FastAPI & Django via react-icons */}
-        <Col xs={4} md={2} className="tech-icons">
-          <SiFastapi size={25} color="#05998b" />
-          <div className="tech-icons-text">FastAPI</div>
+        <Col xs={4} md={2}>
+          <motion.div className="tech-icons" whileHover={{ scale: 1.08, transition: { type: "spring", stiffness: 300 } }}>
+            <SiFastapi size={25} color="#05998b" />
+            <div className="tech-icons-text">FastAPI</div>
+          </motion.div>
         </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <SiDjango size={25} color="#092e20" />
-          <div className="tech-icons-text">Django</div>
+        <Col xs={4} md={2}>
+          <motion.div className="tech-icons" whileHover={{ scale: 1.08, transition: { type: "spring", stiffness: 300 } }}>
+            <SiDjango size={25} color="#092e20" />
+            <div className="tech-icons-text">Django</div>
+          </motion.div>
         </Col>
       </Row>
 
-      {/* ── Section IoT & Embedded ── */}
       <h2 style={{ color: "white", textAlign: "center", margin: "20px 0" }}>
-        🔌 <span className="purple">IoT</span> & Embedded
+        🔌 <span className="purple">{t("techstack_iot_title")}</span>
       </h2>
       <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        <Col xs={4} md={2} className="tech-icons">
-          <img src={C} alt="C/C++" />
-          <div className="tech-icons-text">C / C++</div>
-        </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <SiEspressif size={25} color="#e7352c" />
-          <div className="tech-icons-text">ESP32</div>
-        </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <SiRaspberrypi size={25} color="#c51a4a" />
-          <div className="tech-icons-text">Raspberry Pi</div>
-        </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <SiArduino size={25} color="#00979d" />
-          <div className="tech-icons-text">Arduino</div>
-        </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <img src={mqtt} alt="mqtt" className="tech-icon-images" />
-          <div className="tech-icons-text">MQTT</div>
-        </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <img src={modbus} alt="modbus" className="tech-icon-images" />
-          <div className="tech-icons-text">Modbus</div>
-        </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <img src={rfid} alt="rfid" className="tech-icon-images" />
-          <div className="tech-icons-text">RFID </div>
-        </Col>
-        <Col xs={4} md={2} className="tech-icons">
-          <img src={NFC} alt="NFC" className="tech-icon-images" />
-          <div className="tech-icons-text">NFC </div>
-        </Col>
+        {[
+          { content: <img src={C} alt="C/C++" />, label: "C / C++" },
+          { content: <SiEspressif size={25} color="#e7352c" />, label: "ESP32" },
+          { content: <SiRaspberrypi size={25} color="#c51a4a" />, label: "Raspberry Pi" },
+          { content: <SiArduino size={25} color="#00979d" />, label: "Arduino" },
+          { content: <img src={mqtt} alt="mqtt" className="tech-icon-images" />, label: "MQTT" },
+          { content: <img src={modbus} alt="modbus" className="tech-icon-images" />, label: "Modbus" },
+          { content: <img src={rfid} alt="rfid" className="tech-icon-images" />, label: "RFID" },
+          { content: <img src={NFC} alt="NFC" className="tech-icon-images" />, label: "NFC" },
+        ].map((item, i) => (
+          <Col xs={4} md={2} key={i}>
+            <motion.div
+              className="tech-icons"
+              whileHover={{ scale: 1.08, transition: { type: "spring", stiffness: 300 } }}
+            >
+              {item.content}
+              <div className="tech-icons-text">{item.label}</div>
+            </motion.div>
+          </Col>
+        ))}
       </Row>
     </>
   );

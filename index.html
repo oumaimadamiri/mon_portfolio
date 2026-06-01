@@ -6,53 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#c770f0" />
 
-    <!-- Police Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Google Fonts — preconnect + preload pour éviter le render-blocking -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cookie&family=Outfit&family=PT+Mono&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cookie&family=Outfit&family=PT+Mono&display=swap" />
 
     <!-- SEO Principal -->
     <title>Oumaima Damiri | Ingénieure Full-Stack & IoT</title>
     <meta
       name="description"
-      content="Portfolio d'Oumaima Damiri, ingénieure spécialisée en
-      développement Full-Stack (React, Spring Boot, FastAPI) et systèmes
-      IoT/embarqués (ESP32, Raspberry Pi, MQTT). El Jadida, Maroc."
+      content="Portfolio d'Oumaima Damiri, ingénieure spécialisée en développement Full-Stack (React, Spring Boot, FastAPI) et systèmes IoT/embarqués (ESP32, Raspberry Pi, MQTT). El Jadida, Maroc."
     />
     <meta
       name="keywords"
-      content="Oumaima Damiri, Ingénieure, Full-Stack, IoT, React,
-      React Native, Spring Boot, FastAPI, ESP32, MQTT, Digital Twin,
-      SCADA, Maroc, Casablanca, Portfolio"
+      content="Oumaima Damiri, Ingénieure, Full-Stack, IoT, React, React Native, Spring Boot, FastAPI, ESP32, MQTT, Digital Twin, SCADA, Maroc, Casablanca, Portfolio"
     />
     <meta name="author" content="Oumaima Damiri" />
-
-    <!-- Google Structured Data -->
-    <meta itemprop="name" content="Oumaima Damiri | Ingénieure Full-Stack & IoT" />
-    <meta
-      itemprop="description"
-      content="Ingénieure Systèmes Intelligents — React, Spring Boot,
-      FastAPI, ESP32, MQTT, Digital Twin"
-    />
+    <meta name="robots" content="index, follow" />
 
     <!-- Open Graph (LinkedIn / Facebook) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://oumaima-damiri.vercel.app" />
     <meta property="og:title" content="Oumaima Damiri | Ingénieure Full-Stack & IoT" />
-    <meta
-      property="og:description"
-      content="Ingénieure Systèmes Intelligents spécialisée en Full-Stack
-      et IoT embarqué. Projets : Digital Twin (OCP), Find'N'Tag, Smart Parking."
-    />
+    <meta property="og:description" content="Ingénieure Systèmes Intelligents spécialisée en Full-Stack et IoT embarqué. Projets : Digital Twin (OCP), Find'N'Tag, Smart Parking." />
+    <meta property="og:image" content="https://oumaima-damiri.vercel.app/og-image.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:site_name" content="Oumaima Damiri Portfolio" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Oumaima Damiri | Ingénieure Full-Stack & IoT" />
-    <meta
-      name="twitter:description"
-      content="Portfolio — React, Spring Boot, FastAPI, IoT, Digital Twin. Maroc."
-    />
+    <meta name="twitter:description" content="Portfolio — React, Spring Boot, FastAPI, IoT, Digital Twin. Maroc." />
+    <meta name="twitter:image" content="https://oumaima-damiri.vercel.app/og-image.png" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://oumaima-damiri.vercel.app" />
+
+    <!-- JSON-LD Person schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Oumaima Damiri",
+      "jobTitle": "Full-Stack & IoT Engineer",
+      "url": "https://oumaima-damiri.vercel.app",
+      "sameAs": [
+        "https://github.com/oumaimadamiri",
+        "https://www.linkedin.com/in/oumaima-damiri"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "El Jadida",
+        "addressCountry": "MA"
+      }
+    }
+    </script>
 
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
