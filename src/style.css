@@ -455,6 +455,7 @@ button:focus {
   padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
+  text-align: center !important;
 }
 
 .project-card {
@@ -463,6 +464,7 @@ button:focus {
   padding-left: 25px !important;
   padding-right: 25px !important;
   height: auto !important;
+  text-align: center !important;
 }
 
 .project-card-view {
@@ -475,7 +477,7 @@ button:focus {
 }
 .project-card-view:hover {
   overflow: hidden !important;
-  box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important;
+  box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important; 
 }
 
 .blog-card {
@@ -541,6 +543,7 @@ button:focus {
   font-size: 2.3em !important;
   font-weight: 500 !important;
   padding-top: 10px !important;
+  text-align: center !important;
 }
 
 /* --------- */
@@ -553,6 +556,7 @@ button:focus {
   padding-bottom: 30px !important;
   /* background-image: var(--section-background-color) !important; */
   color: white !important;
+  text-align: center !important;
 }
 
 .tech-icons {
@@ -625,6 +629,7 @@ button:focus {
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
   color: white !important;
+
 }
 
 .resume {

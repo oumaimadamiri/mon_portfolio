@@ -7,13 +7,17 @@ import { AiOutlineDownload, AiOutlineClose } from "react-icons/ai";
 import { MdExpandMore } from "react-icons/md";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
 import { useLang } from "../context/LanguageContext";
 import SEO from "../SEO";
 
 import pdfDev from "../../Assets/Damiri_Oumaima_DEV.pdf";
 import pdfIot from "../../Assets/Damiri_Oumaima_IOT.pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
 
 const CVS = [
   {
