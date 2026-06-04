@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/avatar.svg"; // ← remplacer par "../../Assets/profile.jpg" après avoir ajouté ta photo
 import Tilt from "react-parallax-tilt";
 import { useLang } from "../context/LanguageContext";
 
@@ -41,8 +41,14 @@ function Home2() {
             </p>
           </Col>
           <Col md={4} className="myAvtar">
-            <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+            <Tilt glareEnable={false} tiltMaxAngleX={8} tiltMaxAngleY={8}>
+              <div className="profile-ring-wrapper">
+                <img
+                  src={myImg}
+                  className="img-fluid profile-photo"
+                  alt={t("home2_avatar_alt")}
+                />
+              </div>
             </Tilt>
           </Col>
         </Row>

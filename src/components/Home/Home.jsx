@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import homeLogo from "../../Assets/home.png";
-import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
 import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
@@ -25,7 +25,6 @@ function Home() {
     >
       <SEO path="/" />
       <Container fluid className="home-section" id="home">
-        <Particle />
         <Container className="home-content">
           <Row>
             <Col md={7} className="home-header">
@@ -35,7 +34,7 @@ function Home() {
                 className="heading"
               >
                 {t("home_greeting")}{" "}
-                <span className="wave" role="img" aria-label="hand wave">
+                <span className="wave" role="img" aria-label={t("hand_wave_aria")}>
                   👋🏻
                 </span>
               </motion.h1>
@@ -69,6 +68,15 @@ function Home() {
 
               <motion.div {...safe(fadeUp(0.2))} style={{ padding: 50, textAlign: "left" }}>
                 <Type />
+              </motion.div>
+
+              <motion.div {...safe(fadeUp(0.28))} className="hero-cta-group">
+                <Link to="/project" className="hero-cta hero-cta-primary">
+                  {t("home_cta_projects")}
+                </Link>
+                <Link to="/resume" className="hero-cta hero-cta-secondary">
+                  {t("home_cta_resume")}
+                </Link>
               </motion.div>
             </Col>
 

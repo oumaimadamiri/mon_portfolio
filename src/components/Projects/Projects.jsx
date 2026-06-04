@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "./ProjectCards";
-import Particle from "../Particle";
 import { useLang } from "../context/LanguageContext";
 import SEO from "../SEO";
 import { fadeUp, staggerContainer, cardItem, useMotionSafe } from "../motionPresets";
 
 import digitalTwinImg from "../../Assets/Projects/digital_twin.png";
-import findntagImg    from "../../Assets/Projects/blog.png";
+import findntagImg    from "../../Assets/Projects/findNtag.png";
 import parkingImg     from "../../Assets/Projects/parking.png";
 import quizzyImg      from "../../Assets/Projects/quizzy.png";
 import moodlyImg      from "../../Assets/Projects/moodly.png";
@@ -55,7 +54,6 @@ function Projects() {
     >
       <SEO path="/project" />
       <Container fluid className="project-section">
-        <Particle />
         <Container>
           <motion.h1 {...safe(fadeUp(0))} className="project-heading">
             {t("proj_title1")}{" "}

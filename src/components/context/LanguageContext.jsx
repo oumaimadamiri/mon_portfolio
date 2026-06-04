@@ -234,6 +234,12 @@ export const translations = {
     // ── Footer ──
     footer_designed: "Conçu et développé par Oumaima Damiri",
     footer_copyright: "Copyright",
+
+    // ── Accessibilité / i18n manquants ──
+    preloader_label: "Chargement en cours",
+    hand_wave_aria: "signe de la main",
+    home_cta_projects: "Voir mes projets",
+    home_cta_resume: "Télécharger mon CV",
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -468,6 +474,12 @@ export const translations = {
     // ── Footer ──
     footer_designed: "Designed & Developed by Oumaima Damiri",
     footer_copyright: "Copyright",
+
+    // ── Accessibility / missing i18n ──
+    preloader_label: "Loading",
+    hand_wave_aria: "hand wave",
+    home_cta_projects: "View my projects",
+    home_cta_resume: "Download my CV",
   },
 };
 

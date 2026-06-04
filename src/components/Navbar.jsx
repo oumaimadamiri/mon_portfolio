@@ -12,6 +12,28 @@ import {
 import { CgFileDocument } from "react-icons/cg";
 import { useLang } from "./context/LanguageContext";
 
+const FlagFR = () => (
+  <svg width="20" height="14" viewBox="0 0 3 2" aria-hidden="true" style={{ borderRadius: "2px", display: "block" }}>
+    <rect width="1" height="2" fill="#0055A4" />
+    <rect x="1" width="1" height="2" fill="#FFFFFF" />
+    <rect x="2" width="1" height="2" fill="#EF4135" />
+  </svg>
+);
+
+const FlagGB = () => (
+  <svg width="20" height="14" viewBox="0 0 60 30" aria-hidden="true" style={{ borderRadius: "2px", display: "block" }}>
+    <clipPath id="ukclip"><rect width="60" height="30" /></clipPath>
+    <g clipPath="url(#ukclip)">
+      <rect width="60" height="30" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" strokeWidth="6" />
+      <path d="M0,0 L60,30" stroke="#C8102E" strokeWidth="2" clipPath="polygon(0 0, 30 15, 60 0)" />
+      <path d="M60,0 L0,30" stroke="#C8102E" strokeWidth="2" />
+      <path d="M30,0 L30,30 M0,15 L60,15" stroke="#FFFFFF" strokeWidth="10" />
+      <path d="M30,0 L30,30 M0,15 L60,15" stroke="#C8102E" strokeWidth="6" />
+    </g>
+  </svg>
+);
+
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
@@ -109,6 +131,9 @@ function NavBar() {
                 letterSpacing: "0.06em",
                 transition: "background 0.3s, transform 0.2s",
                 whiteSpace: "nowrap",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "rgba(199, 112, 240, 0.25)";
@@ -119,7 +144,7 @@ function NavBar() {
                 e.currentTarget.style.transform = "scale(1)";
               }}
             >
-              {lang === "fr" ? "🇬🇧 EN" : "🇫🇷 FR"}
+              {lang === "fr" ? <><FlagGB /> EN</> : <><FlagFR /> FR</>}
             </button>
           </div>
         </Navbar.Collapse>

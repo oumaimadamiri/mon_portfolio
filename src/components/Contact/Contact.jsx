@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import Particle from "../Particle";
 import { useLang } from "../context/LanguageContext";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
@@ -45,7 +44,6 @@ function Contact() {
     >
       <SEO path="/contact" />
     <Container fluid className="project-section">
-      <Particle />
       <Container style={{ position: "relative", zIndex: 1 }}>
         <h1 className="project-heading">
           {t("contact_title1")} <strong className="purple">{t("contact_title2")}</strong>

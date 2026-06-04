@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
-import Particle from "../Particle";
 import CurrentlyBuilding from "./CurrentlyBuilding";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
@@ -25,7 +24,6 @@ function About() {
       transition={{ duration: 0.25 }}
     >
       <SEO path="/about" />
-      <Particle />
       <Container fluid className="about-section">
         <Container>
           <motion.div {...safe(fadeUp(0))}>

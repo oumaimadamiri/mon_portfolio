@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
-import Particle from "../Particle";
 import { AiOutlineDownload, AiOutlineClose } from "react-icons/ai";
 import { MdExpandMore } from "react-icons/md";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -22,7 +21,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const CVS = [
   {
     id: "dev",
-    label: "Full-Stack Development",
+    labelKey: "resume_card_dev_label",
     emoji: "💻",
     accent: "#c770f0",
     file: pdfDev,
@@ -34,7 +33,7 @@ const CVS = [
   },
   {
     id: "iot",
-    label: "IoT & Embedded Systems",
+    labelKey: "resume_card_iot_label",
     emoji: "🔌",
     accent: "#38bdf8",
     file: pdfIot,
@@ -49,9 +48,22 @@ const CVS = [
 function ResumeNew() {
   const { t } = useLang();
   const [open, setOpen] = useState(null);
-  const [width] = useState(() =>
+  const [width, setWidth] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
+
+  useEffect(() => {
+    let timer;
+    const handleResize = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => setWidth(window.innerWidth), 150);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const toggle = (id) => setOpen((prev) => (prev === id ? null : id));
   const active = CVS.find((c) => c.id === open);
@@ -65,7 +77,6 @@ function ResumeNew() {
     >
       <SEO path="/resume" />
       <Container fluid className="resume-section">
-        <Particle />
         <div style={{ minHeight: "70vh", display: "flex", flexDirection: "column" }}>
 
           <Row style={{ justifyContent: "center", paddingBottom: "20px" }}>
@@ -100,7 +111,7 @@ function ResumeNew() {
                     <div>
                       <div style={{ fontSize: "2rem", marginBottom: "8px" }}>{cv.emoji}</div>
                       <h4 style={{ color: isOpen ? cv.accent : "white", margin: 0, fontSize: "1.1rem", fontWeight: 600 }}>
-                        {cv.label}
+                        {t(cv.labelKey)}
                       </h4>
                       <div style={{ marginTop: "12px", display: "flex", flexWrap: "wrap", gap: "6px" }}>
                         {cv.techs.map((tech) => (
@@ -168,15 +179,19 @@ function ResumeNew() {
                 <div style={{
                   border: `1.5px solid ${active.accent}55`,
                   borderRadius: "12px",
-                  overflow: "hidden",
+                  overflow: "auto",
                   width: "100%",
                   display: "flex",
                   justifyContent: "center",
                   padding: "16px 0",
                   background: "rgba(255,255,255,0.03)",
+                  maxWidth: "100%",
                 }}>
                   <Document file={active.file} className="d-flex justify-content-center">
-                    <Page pageNumber={1} scale={width <= 768 ? 0.6 : 1.2} />
+                    <Page
+                      pageNumber={1}
+                      scale={width <= 480 ? 0.45 : width <= 768 ? 0.6 : 1.2}
+                    />
                   </Document>
                 </div>
               </Col>
