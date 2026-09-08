@@ -28,7 +28,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href={SOCIAL.github}
-                style={{ color: "white" }}
+                style={{ color: "var(--text-primary)" }}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -40,7 +40,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href={SOCIAL.linkedin}
-                style={{ color: "white" }}
+                style={{ color: "var(--text-primary)" }}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -52,7 +52,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href={`https://mail.google.com/mail/?view=cm&to=${EMAIL}`}
-                style={{ color: "white" }}
+                style={{ color: "var(--text-primary)" }}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t("aria_send_email")}
@@ -64,7 +64,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href={`tel:${PHONE.replace(/\s/g, "")}`}
-                style={{ color: "white" }}
+                style={{ color: "var(--text-primary)" }}
                 title={PHONE}
                 aria-label={t("aria_call_me")}
               >

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
 import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
@@ -10,6 +9,7 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
+import { BsSun, BsMoon } from "react-icons/bs";
 import { useLang } from "./context/LanguageContext";
 
 const FlagFR = () => (
@@ -34,11 +34,24 @@ const FlagGB = () => (
   </svg>
 );
 
+const SECTION_IDS = ["home", "about", "projects", "resume", "contact"];
+
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("portfolio-theme") || "dark"
+  );
   const { t, lang, toggleLang } = useLang();
 
+  // Apply theme to html element
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("portfolio-theme", theme);
+  }, [theme]);
+
+  // Sticky navbar on scroll
   useEffect(() => {
     function scrollHandler() {
       updateNavbar(window.scrollY >= 20);
@@ -46,6 +59,50 @@ function NavBar() {
     window.addEventListener("scroll", scrollHandler, { passive: true });
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
+
+  // Track active section via scroll position
+  useEffect(() => {
+    function updateActive() {
+      const OFFSET = 120;
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(SECTION_IDS[i]);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= OFFSET) {
+          setActiveSection(SECTION_IDS[i]);
+          return;
+        }
+      }
+      setActiveSection("home");
+    }
+    window.addEventListener("scroll", updateActive, { passive: true });
+    updateActive();
+    return () => window.removeEventListener("scroll", updateActive);
+  }, []);
+
+  function handleNavClick(sectionId) {
+    updateExpanded(false);
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+
+  const controlBtnStyle = {
+    background: "rgba(199, 112, 240, 0.12)",
+    border: "1px solid rgba(199, 112, 240, 0.4)",
+    borderRadius: "20px",
+    color: "#c770f0",
+    padding: "4px 12px",
+    fontSize: "0.82rem",
+    fontWeight: "600",
+    cursor: "pointer",
+    letterSpacing: "0.06em",
+    transition: "background 0.3s, transform 0.2s",
+    whiteSpace: "nowrap",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "6px",
+  };
 
   return (
     <Navbar
@@ -56,7 +113,8 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand
-          href="/"
+          href="#home"
+          onClick={(e) => { e.preventDefault(); handleNavClick("home"); }}
           className="d-flex"
           style={{
             color: "#c770f0",
@@ -79,62 +137,86 @@ function NavBar() {
         </Navbar.Toggle>
 
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" defaultActiveKey="#home">
+          <Nav className="ms-auto">
 
             <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#home"
+                active={activeSection === "home"}
+                onClick={(e) => { e.preventDefault(); handleNavClick("home"); }}
+              >
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> {t("nav_home")}
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link as={Link} to="/about" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#about"
+                active={activeSection === "about"}
+                onClick={(e) => { e.preventDefault(); handleNavClick("about"); }}
+              >
                 <AiOutlineUser style={{ marginBottom: "2px" }} /> {t("nav_about")}
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link as={Link} to="/project" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#projects"
+                active={activeSection === "projects"}
+                onClick={(e) => { e.preventDefault(); handleNavClick("projects"); }}
+              >
                 <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} />
                 {" "}{t("nav_projects")}
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link as={Link} to="/resume" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#resume"
+                active={activeSection === "resume"}
+                onClick={(e) => { e.preventDefault(); handleNavClick("resume"); }}
+              >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> {t("nav_resume")}
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link as={Link} to="/contact" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#contact"
+                active={activeSection === "contact"}
+                onClick={(e) => { e.preventDefault(); handleNavClick("contact"); }}
+              >
                 <AiOutlineMail style={{ marginBottom: "2px" }} /> {t("nav_contact")}
               </Nav.Link>
             </Nav.Item>
 
           </Nav>
 
-          <div style={{ display: "flex", alignItems: "center", marginLeft: "12px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginLeft: "12px" }}>
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              title={theme === "dark" ? "Mode clair" : "Mode sombre"}
+              aria-label={theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre"}
+              style={controlBtnStyle}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(199, 112, 240, 0.25)";
+                e.currentTarget.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(199, 112, 240, 0.12)";
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              {theme === "dark" ? <BsSun size={15} /> : <BsMoon size={15} />}
+            </button>
+
+            {/* Language toggle */}
             <button
               onClick={toggleLang}
               title={t("lang_toggle_title")}
               aria-label={t("lang_toggle_title")}
-              style={{
-                background: "rgba(199, 112, 240, 0.12)",
-                border: "1px solid rgba(199, 112, 240, 0.4)",
-                borderRadius: "20px",
-                color: "#c770f0",
-                padding: "4px 14px",
-                fontSize: "0.82rem",
-                fontWeight: "600",
-                cursor: "pointer",
-                letterSpacing: "0.06em",
-                transition: "background 0.3s, transform 0.2s",
-                whiteSpace: "nowrap",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
+              style={controlBtnStyle}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "rgba(199, 112, 240, 0.25)";
                 e.currentTarget.style.transform = "scale(1.05)";

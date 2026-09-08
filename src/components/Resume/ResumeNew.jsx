@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
 import { AiOutlineDownload, AiOutlineClose } from "react-icons/ai";
+import { FiExternalLink } from "react-icons/fi";
 import { MdExpandMore } from "react-icons/md";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
 import { useLang } from "../context/LanguageContext";
-import SEO from "../SEO";
 
 import pdfDev from "../../Assets/Damiri_Oumaima_DEV.pdf";
 import pdfIot from "../../Assets/Damiri_Oumaima_IOT.pdf";
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
 
 const CVS = [
   {
@@ -48,43 +39,27 @@ const CVS = [
 function ResumeNew() {
   const { t } = useLang();
   const [open, setOpen] = useState(null);
-  const [width, setWidth] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth : 1200
-  );
-
-  useEffect(() => {
-    let timer;
-    const handleResize = () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => setWidth(window.innerWidth), 150);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const toggle = (id) => setOpen((prev) => (prev === id ? null : id));
   const active = CVS.find((c) => c.id === open);
 
   return (
-    <motion.main
+    <motion.section
+      id="resume"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.4 }}
     >
-      <SEO path="/resume" />
       <Container fluid className="resume-section">
-        <div style={{ minHeight: "70vh", display: "flex", flexDirection: "column" }}>
+        <div style={{ minHeight: "60vh", display: "flex", flexDirection: "column" }}>
 
           <Row style={{ justifyContent: "center", paddingBottom: "20px" }}>
             <h1 className="project-heading">
               {t("resume_title1")}{" "}
               <strong className="purple">{t("resume_title2")}</strong>
             </h1>
-            <p style={{ color: "rgba(255,255,255,0.6)", textAlign: "center" }}>
+            <p style={{ color: "var(--text-muted)", textAlign: "center" }}>
               {t("resume_subtitle")}
             </p>
           </Row>
@@ -97,10 +72,11 @@ function ResumeNew() {
                   key={cv.id}
                   xs={10} sm={5} md={4}
                   onClick={() => toggle(cv.id)}
+                  className={`cv-card${isOpen ? " cv-card--open" : ""}`}
                   style={{
                     cursor: "pointer",
-                    background: isOpen ? `${cv.accent}22` : "rgba(255,255,255,0.04)",
-                    border: `1.5px solid ${isOpen ? cv.accent : "rgba(255,255,255,0.1)"}`,
+                    background: isOpen ? `${cv.accent}22` : "var(--card-bg)",
+                    border: `1.5px solid ${isOpen ? cv.accent : "var(--card-border)"}`,
                     borderRadius: "16px",
                     padding: "24px",
                     transition: "all 0.3s ease",
@@ -110,7 +86,7 @@ function ResumeNew() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                     <div>
                       <div style={{ fontSize: "2rem", marginBottom: "8px" }}>{cv.emoji}</div>
-                      <h4 style={{ color: isOpen ? cv.accent : "white", margin: 0, fontSize: "1.1rem", fontWeight: 600 }}>
+                      <h4 style={{ color: isOpen ? cv.accent : "var(--text-primary)", margin: 0, fontSize: "1.1rem", fontWeight: 600 }}>
                         {t(cv.labelKey)}
                       </h4>
                       <div style={{ marginTop: "12px", display: "flex", flexWrap: "wrap", gap: "6px" }}>
@@ -146,60 +122,80 @@ function ResumeNew() {
           </Row>
 
           {active && (
-            <Row style={{ justifyContent: "center", animation: "fadeSlideIn 0.3s ease" }}>
+            <Row style={{ justifyContent: "center", marginBottom: "40px" }}>
               <Col xs={12} md={8} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
-
                 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
-                  <Button
+                  <a
                     href={active.file}
-                    target="_blank"
+                    download
                     style={{
                       background: active.accent,
+                      color: "white",
                       border: "none",
                       borderRadius: "8px",
-                      padding: "8px 22px",
-                      display: "flex",
+                      padding: "10px 24px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      fontWeight: 500,
+                      fontSize: "0.95rem",
+                      textDecoration: "none",
+                      transition: "opacity 0.2s",
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.85"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+                  >
+                    <AiOutlineDownload size={18} /> {t("resume_download")}
+                  </a>
+
+                  <a
+                    href={active.file}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      background: "transparent",
+                      color: active.accent,
+                      border: `1.5px solid ${active.accent}`,
+                      borderRadius: "8px",
+                      padding: "10px 24px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      fontWeight: 500,
+                      fontSize: "0.95rem",
+                      textDecoration: "none",
+                      transition: "background 0.2s",
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = `${active.accent}18`; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+                  >
+                    <FiExternalLink size={16} /> Ouvrir
+                  </a>
+
+                  <button
+                    onClick={() => setOpen(null)}
+                    style={{
+                      background: "transparent",
+                      color: "var(--text-muted)",
+                      border: "1px solid var(--card-border)",
+                      borderRadius: "8px",
+                      padding: "10px 16px",
+                      display: "inline-flex",
                       alignItems: "center",
                       gap: "6px",
-                      fontWeight: 500,
+                      fontSize: "0.9rem",
+                      cursor: "pointer",
                     }}
                   >
-                    <AiOutlineDownload /> {t("resume_download")}
-                  </Button>
-
-                  <Button
-                    onClick={() => setOpen(null)}
-                    variant="outline-light"
-                    style={{ borderRadius: "8px", padding: "8px 16px", display: "flex", alignItems: "center", gap: "6px", opacity: 0.6 }}
-                  >
                     <AiOutlineClose /> {t("resume_close")}
-                  </Button>
-                </div>
-
-                <div style={{
-                  border: `1.5px solid ${active.accent}55`,
-                  borderRadius: "12px",
-                  overflow: "auto",
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  padding: "16px 0",
-                  background: "rgba(255,255,255,0.03)",
-                  maxWidth: "100%",
-                }}>
-                  <Document file={active.file} className="d-flex justify-content-center">
-                    <Page
-                      pageNumber={1}
-                      scale={width <= 480 ? 0.45 : width <= 768 ? 0.6 : 1.2}
-                    />
-                  </Document>
+                  </button>
                 </div>
               </Col>
             </Row>
           )}
         </div>
       </Container>
-    </motion.main>
+    </motion.section>
   );
 }
 

@@ -1,6 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg"; // ← remplacer par "../../Assets/profile.jpg" après avoir ajouté ta photo
+// ➡️  PHOTO : dépose ton image dans src/Assets/ sous le nom "profile.jpg"
+//   (format carré recommandé, ≥ 500×500 px, JPG ou PNG)
+//   puis remplace la ligne ci-dessous par :
+//   import myImg from "../../Assets/profile.jpg";
+import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
 import { useLang } from "../context/LanguageContext";
 

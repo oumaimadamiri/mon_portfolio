@@ -3,14 +3,13 @@ import { Container, Row, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "./ProjectCards";
 import { useLang } from "../context/LanguageContext";
-import SEO from "../SEO";
 import { fadeUp, staggerContainer, cardItem, useMotionSafe } from "../motionPresets";
 
-import digitalTwinImg from "../../Assets/Projects/digital_twin.png";
-import findntagImg    from "../../Assets/Projects/findNtag.png";
-import parkingImg     from "../../Assets/Projects/parking.png";
-import quizzyImg      from "../../Assets/Projects/quizzy.png";
-import moodlyImg      from "../../Assets/Projects/moodly.png";
+import digitalTwinImg from "../../Assets/Projects/digital_twin.webp";
+import findntagImg    from "../../Assets/Projects/findNtag.webp";
+import parkingImg     from "../../Assets/Projects/parking.webp";
+import quizzyImg      from "../../Assets/Projects/quizzy.webp";
+import moodlyImg      from "../../Assets/Projects/moodly.webp";
 
 const PROJECT_IMAGES = [digitalTwinImg, findntagImg, parkingImg, quizzyImg, moodlyImg];
 const ALL_FILTERS = ["IoT", "Web", "Mobile", "IA", "Full-Stack", "SCADA"];
@@ -20,7 +19,7 @@ const buttonBase = {
   padding: "6px 20px",
   borderRadius: "20px",
   border: "1px solid #c770f0",
-  color: "white",
+  color: "var(--text-primary)",
   cursor: "pointer",
   fontSize: "0.9em",
   background: "transparent",
@@ -46,13 +45,13 @@ function Projects() {
       : projects.filter((p) => p.tags.includes(activeFilter));
 
   return (
-    <motion.main
+    <motion.section
+      id="projects"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.4 }}
     >
-      <SEO path="/project" />
       <Container fluid className="project-section">
         <Container>
           <motion.h1 {...safe(fadeUp(0))} className="project-heading">
@@ -122,7 +121,7 @@ function Projects() {
           </motion.div>
         </Container>
       </Container>
-    </motion.main>
+    </motion.section>
   );
 }
 

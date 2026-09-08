@@ -31,16 +31,16 @@ function Experience() {
                     <BsBriefcaseFill style={{ marginRight: "8px" }} />
                     {exp.poste}
                   </h5>
-                  <span style={{ color: "#aaa", fontSize: "0.85em" }}>
+                  <span style={{ color: "var(--text-muted)", fontSize: "0.85em" }}>
                     {exp.periode} | {exp.lieu}
                   </span>
                 </div>
-                <p style={{ color: "#b0b0b0", fontStyle: "italic", margin: "4px 0 10px" }}>
+                <p style={{ color: "var(--text-muted)", fontStyle: "italic", margin: "4px 0 10px" }}>
                   {exp.entreprise}
                 </p>
                 <ul>
                   {exp.points.map((point, j) => (
-                    <li key={j} style={{ color: "white", marginBottom: "5px" }}>
+                    <li key={j} style={{ color: "var(--text-primary)", marginBottom: "5px" }}>
                       {point}
                     </li>
                   ))}

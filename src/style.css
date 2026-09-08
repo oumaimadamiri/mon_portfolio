@@ -1,17 +1,66 @@
+/* ===========================
+   CSS VARIABLES – DARK (défaut)
+   =========================== */
 html {
   --section-background-color: linear-gradient(
     to bottom left,
     rgba(17, 16, 16, 0.582),
     rgba(12, 8, 24, 0.904)
   );
-
   --image-gradient: linear-gradient(
     to bottom left,
     rgba(17, 16, 16, 0.678),
     rgba(12, 10, 22, 0.863)
   );
-
   --imp-text-color: #c770f0;
+
+  /* Thème sombre (défaut) */
+  --body-gradient:      linear-gradient(to left, rgb(27, 20, 41), rgb(20, 15, 35));
+  --text-primary:       #ffffff;
+  --text-muted:         rgba(255, 255, 255, 0.62);
+  --section-bg:         transparent;
+  --card-bg:            rgba(255, 255, 255, 0.04);
+  --card-border:        rgba(255, 255, 255, 0.10);
+  --navbar-bg:          transparent;
+  --form-bg:            #ffffff;
+  --form-text:          #212529;
+  --tech-icon-color:    #ffffff;
+
+  scroll-behavior: smooth;
+}
+
+/* ===========================
+   CSS VARIABLES – LIGHT
+   =========================== */
+html[data-theme="light"] {
+  --body-gradient:      linear-gradient(to left, #ede8ff, #f5f0ff);
+  --text-primary:       #1a0b2e;
+  --text-muted:         rgba(26, 11, 46, 0.62);
+  --section-bg:         rgba(245, 240, 255, 0.92);
+  --card-bg:            rgba(255, 255, 255, 0.80);
+  --card-border:        rgba(199, 112, 240, 0.22);
+  --navbar-bg:          rgba(245, 240, 255, 0.96);
+  --form-bg:            #ffffff;
+  --form-text:          #1a0b2e;
+  --tech-icon-color:    #1a0b2e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Fond du body piloté par la variable de thème */
+body {
+  background-image: var(--body-gradient) !important;
+}
+
+/* Offset pour la navbar fixe */
+#home,
+#about,
+#projects,
+#resume,
+#contact {
+  scroll-margin-top: 80px;
 }
 
 .purple {
@@ -208,6 +257,12 @@ button:focus {
 }
 
 .navbar-nav .nav-item a:hover::after {
+  width: 100%;
+}
+
+/* Lien navbar de la section actuellement visible */
+.navbar-nav .nav-item a.active::after,
+.navbar-nav .nav-item a.nav-link.active::after {
   width: 100%;
 }
 
@@ -410,7 +465,7 @@ button:focus {
 /* Footer */
 /* --------- */
 .footer {
-  background-color: rgb(10, 4, 22);
+  background-color: transparent;
   bottom: 0 !important;
   padding-top: 10px !important;
   padding-bottom: 8px !important ;
@@ -436,7 +491,7 @@ button:focus {
 
 .footer h3 {
   font-size: 1em;
-  color: white !important;
+  color: var(--text-primary) !important;
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
 }
@@ -444,6 +499,16 @@ button:focus {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
   padding: 0 !important;
+}
+
+/* Zone tactile confortable pour les icônes du footer (pas de fond ajouté) */
+.footer .social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3em;
 }
 
 .blockquote-footer {
@@ -454,9 +519,10 @@ button:focus {
 /* --------- */
 .project-section {
   position: relative !important;
-  padding-top: 150px !important;
+  padding-top: 80px !important;
   padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
+  background-color: var(--section-bg) !important;
+  background-image: none !important;
   text-align: center !important;
 }
 
@@ -465,8 +531,28 @@ button:focus {
   padding-bottom: 50px !important;
   padding-left: 25px !important;
   padding-right: 25px !important;
-  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
   text-align: center !important;
+}
+
+/* Le motion.div direct enfant du Col doit aussi s'étirer */
+.project-card > * {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* La Card elle-même */
+.project-card-view .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+/* Le texte description pousse les boutons vers le bas */
+.project-card-view .card-body .card-text {
+  flex: 1 !important;
 }
 
 .project-card-view {
@@ -529,6 +615,10 @@ button:focus {
   color: #fff !important;
   background-color: #623686 !important;
   border-color: #623686 !important;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary:hover {
@@ -554,10 +644,11 @@ button:focus {
 
 .about-section {
   position: relative !important;
-  padding-top: 150px !important;
+  padding-top: 60px !important;
   padding-bottom: 30px !important;
-  /* background-image: var(--section-background-color) !important; */
-  color: white !important;
+  background-color: var(--section-bg) !important;
+  background-image: none !important;
+  color: var(--text-primary) !important;
   text-align: center !important;
 }
 
@@ -591,7 +682,18 @@ button:focus {
 
 @media (max-width: 767px) {
   .tech-icons {
-    margin: 10px !important;
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 6px 0 !important;
+    padding: 8px 6px !important;
+  }
+  .tech-icons-text {
+    font-size: 0.72rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.15;
+    margin-left: 6px;
   }
 }
 
@@ -627,11 +729,11 @@ button:focus {
 
 .resume-section {
   position: relative !important;
-  padding-top: 110px !important;
+  padding-top: 80px !important;
   padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
-  color: white !important;
-
+  background-color: var(--section-bg) !important;
+  background-image: none !important;
+  color: var(--text-primary) !important;
 }
 
 .resume {
@@ -951,7 +1053,9 @@ button:focus {
 }
 
 .hero-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 10px 28px;
   border-radius: 30px;
   font-size: 1rem;
@@ -959,6 +1063,7 @@ button:focus {
   text-decoration: none !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .hero-cta-primary {
@@ -1007,7 +1112,7 @@ button:focus {
   .about-section,
   .project-section,
   .resume-section {
-    padding-top: 90px !important;
+    padding-top: 60px !important;
   }
   .project-heading {
     font-size: 1.7em !important;
@@ -1030,11 +1135,12 @@ button:focus {
     padding-left: 15px !important;
     padding-right: 15px !important;
   }
-  /* Project filter buttons wrap nicely */
+  /* Project filter buttons wrap nicely, zone tactile confortable */
   .project-section button {
     margin: 4px !important;
     padding: 5px 12px !important;
     font-size: 0.8em !important;
+    min-height: 44px !important;
   }
 }
 
@@ -1072,4 +1178,169 @@ a:focus-visible,
   outline-offset: 3px !important;
   border-radius: 4px !important;
   box-shadow: none !important;
+}
+
+/* ========================================
+   MODE CLAIR — overrides
+   ======================================== */
+
+/* Navbar */
+html[data-theme="light"] .navbar,
+html[data-theme="light"] .sticky {
+  background-color: var(--navbar-bg) !important;
+  backdrop-filter: blur(15px) !important;
+  box-shadow: 0 2px 12px rgba(199, 112, 240, 0.12) !important;
+}
+html[data-theme="light"] .navbar-nav .nav-item a {
+  color: var(--text-primary) !important;
+}
+
+/* Sections fond clair */
+html[data-theme="light"] .home-section,
+html[data-theme="light"] .home-about-section,
+html[data-theme="light"] .about-section,
+html[data-theme="light"] .project-section,
+html[data-theme="light"] .resume-section {
+  background-color: var(--section-bg) !important;
+  background-image: none !important;
+}
+
+/* Textes globaux (hors footer qui reste sombre) */
+html[data-theme="light"] .heading,
+html[data-theme="light"] .heading-name,
+html[data-theme="light"] .project-heading,
+html[data-theme="light"] .home-about-social,
+html[data-theme="light"] .home-about-description,
+html[data-theme="light"] .home-about-body,
+html[data-theme="light"] .about-section,
+html[data-theme="light"] .quote-card-view,
+html[data-theme="light"] .home-section h1,
+html[data-theme="light"] .home-about-section h1,
+html[data-theme="light"] .about-section h1,
+html[data-theme="light"] .about-section h2,
+html[data-theme="light"] .about-section h3,
+html[data-theme="light"] .about-section h4,
+html[data-theme="light"] .project-section h1,
+html[data-theme="light"] .project-section h2,
+html[data-theme="light"] .project-section h3,
+html[data-theme="light"] .project-section p,
+html[data-theme="light"] .resume-section h1,
+html[data-theme="light"] .resume-section h2,
+html[data-theme="light"] .resume-section label {
+  color: var(--text-primary) !important;
+}
+
+/* Footer : texte adapté au thème, pas de fond forcé */
+html[data-theme="light"] .footer h3 {
+  color: var(--text-primary) !important;
+}
+html[data-theme="light"] .footer a {
+  color: var(--text-primary) !important;
+}
+
+/* Typewriter */
+html[data-theme="light"] .Typewriter__wrapper {
+  color: #7c3aed !important;
+}
+
+/* Hero pills */
+html[data-theme="light"] .purple-pill {
+  background: rgba(199, 112, 240, 0.15) !important;
+  color: #7c3aed !important;
+  border-color: rgba(199, 112, 240, 0.4) !important;
+}
+html[data-theme="light"] .blue-pill {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: #0369a1 !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+html[data-theme="light"] .hero-signature {
+  color: rgba(26, 11, 46, 0.55) !important;
+}
+
+/* Cartes projet */
+html[data-theme="light"] .project-card-view {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--text-primary) !important;
+}
+html[data-theme="light"] .project-card-view .card-title,
+html[data-theme="light"] .project-card-view .card-text {
+  color: var(--text-primary) !important;
+}
+
+/* Tech icons */
+html[data-theme="light"] .tech-icons {
+  background: rgba(255, 255, 255, 0.75) !important;
+  color: var(--tech-icon-color) !important;
+  outline-color: rgba(199, 112, 240, 0.45) !important;
+  box-shadow: 2px 3px 6px rgba(199, 112, 240, 0.15) !important;
+}
+html[data-theme="light"] .tech-icons-text {
+  color: var(--tech-icon-color) !important;
+}
+
+/* Quote / About card */
+html[data-theme="light"] .quote-card-view {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+/* Section CV — cartes Full-Stack / IoT */
+html[data-theme="light"] .cv-card {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+html[data-theme="light"] .cv-card:hover {
+  border-color: rgba(199, 112, 240, 0.5) !important;
+  box-shadow: 0 4px 16px rgba(199, 112, 240, 0.15);
+}
+
+/* Timeline Expérience / Formation */
+html[data-theme="light"] .resume-item {
+  border-left-color: #c770f0 !important;
+}
+html[data-theme="light"] .resume-item::before {
+  background: #c770f0 !important;
+  border-color: #c770f0 !important;
+}
+
+/* Formulaire contact */
+html[data-theme="light"] .form-control {
+  background-color: #ffffff !important;
+  border-color: rgba(199, 112, 240, 0.3) !important;
+  color: #1a0b2e !important;
+}
+html[data-theme="light"] .form-control::placeholder {
+  color: rgba(26, 11, 46, 0.4) !important;
+}
+html[data-theme="light"] .form-control:focus {
+  border-color: #c770f0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(199, 112, 240, 0.25) !important;
+}
+
+/* Social icons fond clair */
+html[data-theme="light"] .home-social-icons {
+  background: rgba(26, 11, 46, 0.08) !important;
+}
+html[data-theme="light"] .home-social-icons::before {
+  background: #c770f0 !important;
+}
+
+/* Lien actif navbar en mode clair */
+html[data-theme="light"] .navbar-nav .nav-link.active::after,
+html[data-theme="light"] .navbar-nav .nav-item a.nav-link.active::after {
+  background: #7c3aed;
+}
+html[data-theme="light"] .navbar-nav .nav-item a:hover::after {
+  background: #7c3aed;
+}
+
+/* Mobile overrides en mode clair */
+@media (max-width: 767px) {
+  html[data-theme="light"] .about-section,
+  html[data-theme="light"] .project-section,
+  html[data-theme="light"] .resume-section {
+    padding-top: 60px !important;
+  }
 }

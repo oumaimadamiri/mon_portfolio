@@ -31,16 +31,16 @@ function Education() {
                     <BsBook style={{ marginRight: "8px" }} />
                     {f.diplome}
                   </h5>
-                  <span style={{ color: "#aaa", fontSize: "0.85em" }}>
+                  <span style={{ color: "var(--text-muted)", fontSize: "0.85em" }}>
                     {f.periode}
                   </span>
                 </div>
                 {f.specialite && (
-                  <p style={{ color: "#b0b0b0", fontStyle: "italic", margin: "4px 0 4px" }}>
+                  <p style={{ color: "var(--text-muted)", fontStyle: "italic", margin: "4px 0 4px" }}>
                     {f.specialite}
                   </p>
                 )}
-                <p style={{ color: "white", margin: 0 }}>{f.ecole}</p>
+                <p style={{ color: "var(--text-primary)", margin: 0 }}>{f.ecole}</p>
               </div>
             ))}
           </div>

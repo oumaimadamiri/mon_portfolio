@@ -1,14 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import homeLogo from "../../Assets/home.png";
+import homeLogo from "../../Assets/home.webp";
 import Home2 from "./Home2";
 import Type from "./Type";
-import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
-import { FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { useLang } from "../context/LanguageContext";
-import { PHONE, EMAIL, SOCIAL } from "../../constants";
 import SEO from "../SEO";
 import { fadeUp, useMotionSafe } from "../motionPresets";
 
@@ -17,11 +13,10 @@ function Home() {
   const safe = useMotionSafe();
 
   return (
-    <motion.main
+    <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.4 }}
     >
       <SEO path="/" />
       <Container fluid className="home-section" id="home">
@@ -71,12 +66,12 @@ function Home() {
               </motion.div>
 
               <motion.div {...safe(fadeUp(0.28))} className="hero-cta-group">
-                <Link to="/project" className="hero-cta hero-cta-primary">
+                <a href="#projects" className="hero-cta hero-cta-primary">
                   {t("home_cta_projects")}
-                </Link>
-                <Link to="/resume" className="hero-cta hero-cta-secondary">
+                </a>
+                <a href="#resume" className="hero-cta hero-cta-secondary">
                   {t("home_cta_resume")}
-                </Link>
+                </a>
               </motion.div>
             </Col>
 
@@ -93,64 +88,7 @@ function Home() {
         </Container>
       </Container>
       <Home2 />
-
-      <Container>
-        <Row style={{ paddingTop: "50px", paddingBottom: "80px" }}>
-          <Col md={12} className="home-about-social">
-            <h1>{t("home_findme")}</h1>
-            <p>
-              {t("home_contact_invite")}{" "}
-              <span className="purple">{t("home_contact_invite_purple")}</span>
-            </p>
-            <ul className="home-about-social-links">
-              <li className="social-icons">
-                <a
-                  href={SOCIAL.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                  aria-label="GitHub"
-                >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href={SOCIAL.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href={`https://mail.google.com/mail/?view=cm&to=${EMAIL}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                  aria-label="Email"
-                >
-                  <AiOutlineMail />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href={`tel:${PHONE.replace(/\s/g, "")}`}
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                  aria-label="Phone"
-                >
-                  <FaPhoneAlt />
-                </a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </Container>
-    </motion.main>
+    </motion.section>
   );
 }
 
